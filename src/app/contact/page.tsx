@@ -2,6 +2,7 @@ import { Metadata } from "next";
 import Header from "@/components/Header";
 import Contact from "@/components/Contact";
 import Footer from "@/components/Footer";
+import PageTransition from "@/components/PageTransition";
 
 export const metadata: Metadata = {
   title: "Contact - Hunny Shah | Get in Touch",
@@ -14,9 +15,15 @@ export const metadata: Metadata = {
 export default function ContactPage() {
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-50 via-slate-100 to-slate-200 dark:from-slate-900 dark:via-slate-800 dark:to-slate-900">
-      <Header />
-      <Contact />
-      <Footer />
+      <PageTransition delay={0}>
+        <Header />
+      </PageTransition>
+      <PageTransition delay={0.1}>
+        <Contact />
+      </PageTransition>
+      <PageTransition delay={0.2}>
+        <Footer />
+      </PageTransition>
     </div>
   );
 }

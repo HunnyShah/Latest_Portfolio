@@ -17,13 +17,13 @@ const About = () => {
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="text-center mb-12 sm:mb-16">
-          <div className="card-skeuomorphic inline-block px-4 sm:px-6 py-2 sm:py-3 mb-4 sm:mb-6">
-            <span className="text-indigo-400 font-semibold text-sm sm:text-base">
+          <div className="inline-flex items-center px-4 sm:px-6 py-2 sm:py-3 mb-4 sm:mb-6 bg-gradient-to-r from-indigo-50 to-purple-50 dark:from-indigo-900/30 dark:to-purple-900/30 rounded-full border border-indigo-200 dark:border-indigo-700">
+            <span className="text-indigo-600 dark:text-indigo-400 font-semibold text-sm sm:text-base">
               About Me
             </span>
           </div>
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-4 sm:mb-6 text-shadow-strong">
-            <span className="bg-gradient-to-r from-indigo-400 to-cyan-400 bg-clip-text text-transparent">
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-4 sm:mb-6 text-slate-900 dark:text-white">
+            <span className="bg-gradient-to-r from-indigo-600 via-purple-600 to-cyan-600 dark:from-indigo-400 dark:via-purple-400 dark:to-cyan-400 bg-clip-text text-transparent">
               Passionate Developer & Problem Solver
             </span>
           </h2>
@@ -31,7 +31,7 @@ const About = () => {
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-12 items-center">
-          <div className="card-skeuomorphic p-6 sm:p-8">
+          <div className="bg-slate-100/80 dark:bg-slate-800/80 p-6 sm:p-8 rounded-xl border border-slate-200 dark:border-slate-700 backdrop-blur-sm">
             <div className="flex items-center mb-6">
               <div className="w-12 h-12 bg-gradient-to-br from-indigo-500 to-purple-600 rounded-full flex items-center justify-center mr-4">
                 <svg
@@ -68,19 +68,19 @@ const About = () => {
             </p>
 
             <div className="flex flex-wrap gap-3">
-              <span className="card-skeuomorphic px-4 py-2 text-indigo-400 font-medium text-sm">
+              <span className="px-4 py-2 bg-indigo-100 dark:bg-indigo-900/30 text-indigo-700 dark:text-indigo-300 rounded-lg font-medium text-sm border border-indigo-200 dark:border-indigo-700">
                 Full-Stack Developer
               </span>
-              <span className="card-skeuomorphic px-4 py-2 text-purple-400 font-medium text-sm">
+              <span className="px-4 py-2 bg-purple-100 dark:bg-purple-900/30 text-purple-700 dark:text-purple-300 rounded-lg font-medium text-sm border border-purple-200 dark:border-purple-700">
                 Innovation Driven
               </span>
-              <span className="card-skeuomorphic px-4 py-2 text-cyan-400 font-medium text-sm">
+              <span className="px-4 py-2 bg-cyan-100 dark:bg-cyan-900/30 text-cyan-700 dark:text-cyan-300 rounded-lg font-medium text-sm border border-cyan-200 dark:border-cyan-700">
                 Quality Focused
               </span>
             </div>
           </div>
 
-          <div className="card-skeuomorphic p-8">
+          <div className="bg-slate-100/80 dark:bg-slate-800/80 p-8 rounded-xl border border-slate-200 dark:border-slate-700 backdrop-blur-sm">
             <div className="flex items-center mb-6">
               <div className="w-12 h-12 bg-gradient-to-br from-purple-500 to-pink-600 rounded-full flex items-center justify-center mr-4">
                 <svg

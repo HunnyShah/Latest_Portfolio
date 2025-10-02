@@ -1,73 +1,112 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useTransition } from "react";
 import Link from "next/link";
+import { usePathname, useRouter } from "next/navigation";
 import { ThemeToggle } from "./ThemeToggle";
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isPending, startTransition] = useTransition();
+  const pathname = usePathname();
+  const router = useRouter();
+
+  // Function to check if a link is active
+  const isActive = (path: string) => {
+    if (path === "/") return pathname === "/";
+    return pathname.startsWith(path);
+  };
+
+  // Enhanced navigation with smooth transition
+  const handleNavigation = (href: string) => {
+    if (pathname !== href) {
+      startTransition(() => {
+        router.push(href);
+      });
+    }
+    setIsMenuOpen(false);
+  };
 
   return (
-    <header className="bg-white/80 dark:bg-slate-900/80 backdrop-blur-md border-b border-slate-200 dark:border-slate-700 shadow-lg sticky top-0 z-50">
-      <div className="absolute inset-0 bg-gradient-to-r from-slate-100 to-slate-200 dark:from-slate-900 dark:to-slate-800 opacity-50 ai-grid"></div>
-      <div className="absolute top-0 left-0 w-full h-0.5 bg-gradient-to-r from-indigo-500 via-purple-500 to-cyan-400 data-stream"></div>
-      <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        <div className="flex justify-between items-center py-4">
-          <div className="flex items-center">
-            <Link href="/">
-              <div className="card-skeuomorphic px-4 py-2 relative overflow-hidden">
-                <div className="absolute inset-0 neural-network"></div>
-                <h1 className="text-2xl font-bold bg-gradient-to-r from-indigo-400 to-cyan-400 bg-clip-text text-transparent cursor-pointer hover:from-indigo-300 hover:to-cyan-300 transition-all duration-300 relative z-10 flex items-center">
-                  <span className="mr-2 text-cyan-400">⚡</span>
+    <header className="bg-white/95 dark:bg-slate-900/95 backdrop-blur-sm border-b border-slate-200/50 dark:border-slate-700/50 sticky top-0 z-50 transition-all duration-300">
+      <nav className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="flex items-center py-4">
+          {/* Left: Logo/Name - Fixed width to push content */}
+          <div className="flex items-center w-64">
+            <Link href="/" className="group">
+              <div className="flex items-center space-x-2">
+                <div className="w-8 h-8 bg-gradient-to-br from-indigo-600 to-purple-600 rounded-lg flex items-center justify-center">
+                  <span className="text-white font-bold text-sm">HS</span>
+                </div>
+                <span className="text-xl font-bold text-slate-900 dark:text-white group-hover:text-indigo-600 dark:group-hover:text-indigo-400 transition-colors duration-300">
                   Hunny Shah
-                  <div className="ml-2 w-2 h-2 bg-green-400 rounded-full animate-pulse"></div>
-                </h1>
+                </span>
               </div>
             </Link>
           </div>
 
-          {/* Desktop Navigation */}
-          <div className="hidden md:block">
-            <div className="ml-10 flex items-baseline space-x-4">
-              <Link
-                href="/about"
-                className="text-slate-600 dark:text-slate-300 hover:text-indigo-400 px-4 py-2 text-sm font-medium transition-all duration-300 rounded-lg hover:bg-gradient-to-r hover:from-slate-100 hover:to-slate-50 dark:hover:from-slate-800 dark:hover:to-slate-700 hover:shadow-md"
+          {/* Center: Desktop Navigation - Absolute center */}
+          <div className="hidden md:flex flex-1 justify-center">
+            <div className="flex items-center space-x-8">
+              <button
+                onClick={() => handleNavigation("/about")}
+                className={`text-sm font-medium transition-all duration-300 ${
+                  isActive("/about")
+                    ? "text-indigo-600 dark:text-indigo-400 font-semibold"
+                    : "text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white"
+                } ${isPending ? "opacity-70" : ""}`}
+                disabled={isPending}
               >
                 About
-              </Link>
-              <Link
-                href="/projects"
-                className="text-slate-600 dark:text-slate-300 hover:text-purple-400 px-4 py-2 text-sm font-medium transition-all duration-300 rounded-lg hover:bg-gradient-to-r hover:from-slate-100 hover:to-slate-50 dark:hover:from-slate-800 dark:hover:to-slate-700 hover:shadow-md"
+              </button>
+              <button
+                onClick={() => handleNavigation("/projects")}
+                className={`text-sm font-medium transition-all duration-300 ${
+                  isActive("/projects")
+                    ? "text-indigo-600 dark:text-indigo-400 font-semibold"
+                    : "text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white"
+                } ${isPending ? "opacity-70" : ""}`}
+                disabled={isPending}
               >
                 Projects
-              </Link>
-              <Link
-                href="/skills"
-                className="text-slate-600 dark:text-slate-300 hover:text-cyan-400 px-4 py-2 text-sm font-medium transition-all duration-300 rounded-lg hover:bg-gradient-to-r hover:from-slate-100 hover:to-slate-50 dark:hover:from-slate-800 dark:hover:to-slate-700 hover:shadow-md"
+              </button>
+              <button
+                onClick={() => handleNavigation("/skills")}
+                className={`text-sm font-medium transition-all duration-300 ${
+                  isActive("/skills")
+                    ? "text-indigo-600 dark:text-indigo-400 font-semibold"
+                    : "text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white"
+                } ${isPending ? "opacity-70" : ""}`}
+                disabled={isPending}
               >
                 Skills
-              </Link>
-              <Link
-                href="/contact"
-                className="btn-skeuomorphic text-white px-6 py-2 text-sm font-medium rounded-lg"
+              </button>
+              <button
+                onClick={() => handleNavigation("/contact")}
+                className={`text-sm font-medium transition-all duration-300 ${
+                  isActive("/contact")
+                    ? "text-indigo-600 dark:text-indigo-400 font-semibold"
+                    : "text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white"
+                } ${isPending ? "opacity-70" : ""}`}
+                disabled={isPending}
               >
                 Contact
-              </Link>
-              <ThemeToggle />
+              </button>
             </div>
           </div>
 
-          {/* Mobile Controls */}
-          <div className="md:hidden flex items-center space-x-2">
+          {/* Right: Theme Toggle and Mobile Controls - Fixed width for balance */}
+          <div className="flex items-center justify-end space-x-3 w-64">
             <ThemeToggle />
+            {/* Mobile Menu Button */}
             <button
               onClick={() => setIsMenuOpen(!isMenuOpen)}
-              className="text-slate-600 dark:text-slate-300 hover:text-indigo-400 transition-colors p-2 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800 min-w-[44px] min-h-[44px] flex items-center justify-center"
+              className="md:hidden text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white transition-colors p-2 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800"
               aria-label="Toggle mobile menu"
               aria-expanded={isMenuOpen}
             >
               <svg
-                className="w-6 h-6"
+                className="w-5 h-5"
                 fill="none"
                 stroke="currentColor"
                 viewBox="0 0 24 24"
@@ -94,36 +133,52 @@ const Header = () => {
 
         {/* Mobile Navigation */}
         {isMenuOpen && (
-          <div className="md:hidden border-t border-slate-200 dark:border-slate-700 pt-4 pb-6">
-            <div className="flex flex-col space-y-3">
-              <Link
-                href="/about"
-                className="text-slate-600 dark:text-slate-300 hover:text-indigo-400 px-4 py-3 text-sm font-medium transition-all duration-300 rounded-lg hover:bg-gradient-to-r hover:from-slate-100 hover:to-slate-50 dark:hover:from-slate-800 dark:hover:to-slate-700"
-                onClick={() => setIsMenuOpen(false)}
+          <div className="md:hidden border-t border-slate-200/50 dark:border-slate-700/50 py-4">
+            <div className="flex flex-col space-y-1">
+              <button
+                onClick={() => handleNavigation("/about")}
+                className={`px-4 py-3 text-sm font-medium transition-all duration-300 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800 text-left ${
+                  isActive("/about")
+                    ? "text-indigo-600 dark:text-indigo-400 font-semibold bg-indigo-50 dark:bg-indigo-900/20"
+                    : "text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white"
+                } ${isPending ? "opacity-70" : ""}`}
+                disabled={isPending}
               >
                 About
-              </Link>
-              <Link
-                href="/projects"
-                className="text-slate-600 dark:text-slate-300 hover:text-purple-400 px-4 py-3 text-sm font-medium transition-all duration-300 rounded-lg hover:bg-gradient-to-r hover:from-slate-100 hover:to-slate-50 dark:hover:from-slate-800 dark:hover:to-slate-700"
-                onClick={() => setIsMenuOpen(false)}
+              </button>
+              <button
+                onClick={() => handleNavigation("/projects")}
+                className={`px-4 py-3 text-sm font-medium transition-all duration-300 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800 text-left ${
+                  isActive("/projects")
+                    ? "text-indigo-600 dark:text-indigo-400 font-semibold bg-indigo-50 dark:bg-indigo-900/20"
+                    : "text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white"
+                } ${isPending ? "opacity-70" : ""}`}
+                disabled={isPending}
               >
                 Projects
-              </Link>
-              <Link
-                href="/skills"
-                className="text-slate-600 dark:text-slate-300 hover:text-cyan-400 px-4 py-3 text-sm font-medium transition-all duration-300 rounded-lg hover:bg-gradient-to-r hover:from-slate-100 hover:to-slate-50 dark:hover:from-slate-800 dark:hover:to-slate-700"
-                onClick={() => setIsMenuOpen(false)}
+              </button>
+              <button
+                onClick={() => handleNavigation("/skills")}
+                className={`px-4 py-3 text-sm font-medium transition-all duration-300 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800 text-left ${
+                  isActive("/skills")
+                    ? "text-indigo-600 dark:text-indigo-400 font-semibold bg-indigo-50 dark:bg-indigo-900/20"
+                    : "text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white"
+                } ${isPending ? "opacity-70" : ""}`}
+                disabled={isPending}
               >
                 Skills
-              </Link>
-              <Link
-                href="/contact"
-                className="btn-skeuomorphic text-white px-6 py-3 text-sm font-medium rounded-lg mx-4"
-                onClick={() => setIsMenuOpen(false)}
+              </button>
+              <button
+                onClick={() => handleNavigation("/contact")}
+                className={`px-4 py-3 text-sm font-medium transition-all duration-300 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800 text-left ${
+                  isActive("/contact")
+                    ? "text-indigo-600 dark:text-indigo-400 font-semibold bg-indigo-50 dark:bg-indigo-900/20"
+                    : "text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white"
+                } ${isPending ? "opacity-70" : ""}`}
+                disabled={isPending}
               >
                 Contact
-              </Link>
+              </button>
             </div>
           </div>
         )}

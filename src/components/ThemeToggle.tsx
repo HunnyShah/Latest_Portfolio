@@ -14,20 +14,21 @@ export function ThemeToggle() {
 
   if (!mounted) {
     return (
-      <div className="w-10 h-10 rounded-lg bg-slate-800 animate-pulse"></div>
+      <div className="w-10 h-10 rounded-lg bg-white/95 dark:bg-slate-900/95 backdrop-blur-sm animate-pulse"></div>
     );
   }
 
+  const isDark = theme === "dark";
+
   return (
     <button
-      onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
-      className="relative w-10 h-10 rounded-lg card-skeuomorphic p-2 transition-all duration-300 hover:scale-105 group"
-      aria-label="Toggle theme"
+      onClick={() => setTheme(isDark ? "light" : "dark")}
+      className="w-10 h-10 rounded-lg bg-white/95 dark:bg-slate-900/95 backdrop-blur-sm hover:bg-white dark:hover:bg-slate-800 border border-slate-200/50 dark:border-slate-700/50 transition-all duration-300 flex items-center justify-center focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
+      aria-label={`Switch to ${isDark ? "light" : "dark"} mode`}
     >
-      <div className="absolute inset-0 neural-network opacity-50"></div>
-      {theme === "dark" ? (
+      {isDark ? (
         <svg
-          className="w-6 h-6 text-yellow-400 relative z-10 group-hover:text-yellow-300 transition-colors"
+          className="w-5 h-5 text-yellow-500"
           fill="currentColor"
           viewBox="0 0 20 20"
         >
@@ -39,7 +40,7 @@ export function ThemeToggle() {
         </svg>
       ) : (
         <svg
-          className="w-6 h-6 text-slate-600 relative z-10 group-hover:text-slate-500 transition-colors"
+          className="w-5 h-5 text-slate-600 dark:text-slate-400"
           fill="currentColor"
           viewBox="0 0 20 20"
         >
