@@ -1,6 +1,10 @@
+"use client";
+
 import React from "react";
+import { useTranslations } from "next-intl";
 
 const Contact = () => {
+  const t = useTranslations("contact");
   return (
     <section
       id="contact"
@@ -103,19 +107,17 @@ const Contact = () => {
             <div className="absolute inset-0 ai-grid"></div>
             <span className="text-cyan-400 font-semibold relative z-10 flex items-center text-sm sm:text-base">
               <span className="mr-2">🤖</span>
-              <span className="hidden sm:inline">
-                AI-Powered Communication Hub
-              </span>
-              <span className="sm:hidden">Contact</span>
+              <span className="hidden sm:inline">{t("aiHub")}</span>
+              <span className="sm:hidden">{t("contactHub")}</span>
             </span>
           </div>
 
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-4 sm:mb-6 text-shadow-strong relative">
             <span
               className="bg-gradient-to-r from-indigo-400 to-cyan-400 bg-clip-text text-transparent glitch"
-              data-text="Let's Connect"
+              data-text={t("letsConnect")}
             >
-              Let&apos;s Connect
+              {t("letsConnect")}
             </span>
             <div className="absolute -top-1 -right-1 w-2 h-2 sm:w-3 sm:h-3 bg-green-400 rounded-full animate-pulse"></div>
           </h2>
@@ -125,10 +127,7 @@ const Contact = () => {
           </div>
 
           <p className="text-lg text-slate-600 dark:text-slate-400 max-w-2xl mx-auto leading-relaxed">
-            Ready to bring your ideas to life with AI-powered solutions?
-            <span className="inline-block mx-1 text-cyan-400">⚡</span>
-            Let&apos;s discuss your project and explore the infinite
-            possibilities together.
+            {t("readyToConnect")}
           </p>
         </div>
 
@@ -155,15 +154,13 @@ const Contact = () => {
                   <div className="absolute -top-1 -right-1 w-3 h-3 bg-green-400 rounded-full animate-pulse"></div>
                 </div>
                 <h3 className="text-2xl font-bold text-slate-800 dark:text-slate-200 flex items-center">
-                  <span className="mr-2">🧠</span>Smart Contact Hub
+                  <span className="mr-2">🧠</span>
+                  {t("smartContact")}
                 </h3>
               </div>
 
               <p className="text-slate-600 dark:text-slate-400 mb-8 leading-relaxed">
-                Whether you have an AI project in mind, want to discuss ML
-                opportunities, or just want to connect about the future of
-                technology, I&apos;d love to hear from you. My AI assistant will
-                ensure I respond promptly!
+                {t("contactDescription")}
                 <span className="inline-block ml-1">🤖</span>
               </p>
 
@@ -212,7 +209,8 @@ const Contact = () => {
                   </div>
                   <div className="relative z-10">
                     <p className="font-semibold text-slate-800 dark:text-slate-200 flex items-center">
-                      <span className="mr-2">💼</span>LinkedIn
+                      <span className="mr-2">💼</span>
+                      {t("linkedin")}
                     </p>
                     <p className="text-slate-600 dark:text-slate-400">
                       linkedin.com/in/hunnyshah
@@ -237,7 +235,8 @@ const Contact = () => {
                   </div>
                   <div className="relative z-10">
                     <p className="font-semibold text-slate-800 dark:text-slate-200 flex items-center">
-                      <span className="mr-2">🔬</span>GitHub
+                      <span className="mr-2">🔬</span>
+                      {t("github")}
                     </p>
                     <p className="text-slate-600 dark:text-slate-400">
                       github.com/hunnyshah
@@ -253,10 +252,11 @@ const Contact = () => {
                   <div className="w-3 h-3 bg-green-500 rounded-full mr-3 animate-pulse"></div>
                   <div>
                     <span className="font-semibold text-slate-800 dark:text-slate-200 flex items-center">
-                      <span className="mr-2">🚀</span>Status:
+                      <span className="mr-2">🚀</span>
+                      {t("statusLabel")}:
                     </span>
                     <span className="text-green-600 dark:text-green-400 font-medium">
-                      Available for AI/ML projects
+                      {t("statusAvailable")}
                     </span>
                   </div>
                 </div>
@@ -286,7 +286,8 @@ const Contact = () => {
                   <div className="absolute -top-1 -right-1 w-3 h-3 bg-blue-400 rounded-full animate-pulse"></div>
                 </div>
                 <h3 className="text-2xl font-bold text-slate-800 dark:text-slate-200 flex items-center">
-                  <span className="mr-2">⚡</span>Smart Message Portal
+                  <span className="mr-2">⚡</span>
+                  {t("smartMessage")}
                 </h3>
               </div>
 
@@ -296,14 +297,15 @@ const Contact = () => {
                     htmlFor="name"
                     className="flex items-center text-sm font-semibold text-slate-700 dark:text-slate-300 mb-2"
                   >
-                    <span className="mr-2">👤</span>Full Name
+                    <span className="mr-2">👤</span>
+                    {t("fullName")}
                   </label>
                   <input
                     type="text"
                     id="name"
                     name="name"
                     className="input-skeuomorphic w-full px-4 py-3 text-slate-800 dark:text-slate-200 placeholder-slate-400 dark:placeholder-slate-500 transition-all"
-                    placeholder="Your full name"
+                    placeholder={t("namePlaceholder")}
                   />
                 </div>
 
@@ -312,14 +314,15 @@ const Contact = () => {
                     htmlFor="email"
                     className="flex items-center text-sm font-semibold text-slate-700 dark:text-slate-300 mb-2"
                   >
-                    <span className="mr-2">📧</span>Email Address
+                    <span className="mr-2">📧</span>
+                    {t("emailAddress")}
                   </label>
                   <input
                     type="email"
                     id="email"
                     name="email"
                     className="input-skeuomorphic w-full px-4 py-3 text-slate-800 dark:text-slate-200 placeholder-slate-400 dark:placeholder-slate-500 transition-all"
-                    placeholder="your.email@example.com"
+                    placeholder={t("emailPlaceholder")}
                   />
                 </div>
 
@@ -328,14 +331,15 @@ const Contact = () => {
                     htmlFor="subject"
                     className="flex items-center text-sm font-semibold text-slate-700 dark:text-slate-300 mb-2"
                   >
-                    <span className="mr-2">🎯</span>Subject
+                    <span className="mr-2">🎯</span>
+                    {t("subject")}
                   </label>
                   <input
                     type="text"
                     id="subject"
                     name="subject"
                     className="input-skeuomorphic w-full px-4 py-3 text-slate-800 dark:text-slate-200 placeholder-slate-400 dark:placeholder-slate-500 transition-all"
-                    placeholder="AI project, ML consultation, collaboration..."
+                    placeholder={t("subjectPlaceholder")}
                   />
                 </div>
 
@@ -344,14 +348,15 @@ const Contact = () => {
                     htmlFor="message"
                     className="flex items-center text-sm font-semibold text-slate-700 dark:text-slate-300 mb-2"
                   >
-                    <span className="mr-2">💭</span>Message
+                    <span className="mr-2">💭</span>
+                    {t("message")}
                   </label>
                   <textarea
                     id="message"
                     name="message"
                     rows={6}
                     className="input-skeuomorphic w-full px-4 py-3 text-slate-800 dark:text-slate-200 placeholder-slate-400 dark:placeholder-slate-500 transition-all resize-none"
-                    placeholder="Tell me about your AI project, ideas, or how we can collaborate to build something amazing..."
+                    placeholder={t("messagePlaceholder")}
                   ></textarea>
                 </div>
 
@@ -374,7 +379,8 @@ const Contact = () => {
                         d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8"
                       />
                     </svg>
-                    <span className="mr-2">🚀</span>Launch Message
+                    <span className="mr-2">🚀</span>
+                    {t("launchMessage")}
                   </span>
                 </button>
               </form>

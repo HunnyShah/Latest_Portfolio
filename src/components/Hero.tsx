@@ -1,7 +1,12 @@
-﻿import React from "react";
+﻿"use client";
+
+import React from "react";
 import Link from "next/link";
+import { useTranslations } from "next-intl";
 
 const Hero = () => {
+  const t = useTranslations("hero");
+
   return (
     <section className="min-h-screen bg-gradient-to-br from-slate-50 via-white to-slate-100 dark:from-slate-900 dark:via-slate-800 dark:to-slate-900 py-20 relative overflow-hidden">
       {/* Background Pattern */}
@@ -33,27 +38,26 @@ const Hero = () => {
           </div>
 
           <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold mb-6 text-slate-900 dark:text-white">
+            <span className="block text-lg sm:text-xl md:text-2xl font-medium mb-4 text-slate-600 dark:text-slate-400">
+              {t("greeting")}
+            </span>
             <span className="bg-gradient-to-r from-indigo-600 via-purple-600 to-cyan-600 dark:from-indigo-400 dark:via-purple-400 dark:to-cyan-400 bg-clip-text text-transparent">
-              Hunny Shah
+              {t("name")}
             </span>
           </h1>
 
           <div className="inline-flex items-center px-6 py-3 mb-8 bg-slate-100/80 dark:bg-slate-800/80 rounded-xl border border-slate-200 dark:border-slate-700 backdrop-blur-sm">
             <p className="text-lg sm:text-xl lg:text-2xl text-slate-700 dark:text-slate-300 font-medium">
               <span className="inline-block mr-2">⚡</span>
-              <span className="block sm:inline">Full-Stack Developer &</span>
-              <span className="block sm:inline"> AI Innovation Engineer</span>
+              <span className="block sm:inline">{t("title")}</span>
             </p>
           </div>
 
           <p className="text-base sm:text-lg text-slate-600 dark:text-slate-400 mb-8 sm:mb-12 max-w-2xl mx-auto leading-relaxed px-4 sm:px-0">
-            Crafting intelligent, beautiful, and scalable web experiences with
-            cutting-edge AI technologies.
+            {t("subtitle")}
             <span className="inline-block mx-1 text-indigo-500 dark:text-cyan-400">
               ✨
             </span>
-            Passionate about creating solutions that push the boundaries of
-            what&apos;s possible.
           </p>
 
           <div className="flex flex-col sm:flex-row gap-4 sm:gap-6 justify-center mt-8 sm:mt-12 px-4 sm:px-0">
@@ -74,7 +78,7 @@ const Hero = () => {
                   d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"
                 />
               </svg>
-              View My Work
+              {t("viewWork")}
             </Link>
             <Link
               href="/contact"
@@ -93,7 +97,7 @@ const Hero = () => {
                   d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"
                 />
               </svg>
-              Let&apos;s Connect
+              {t("contactMe")}
             </Link>
           </div>
 
@@ -104,7 +108,7 @@ const Hero = () => {
                 <span className="mr-2">🧠</span>3+
               </div>
               <div className="text-slate-700 dark:text-slate-300 text-sm sm:text-base">
-                Years AI Experience
+                {t("yearsAIExperience")}
               </div>
             </div>
             <div className="bg-slate-100/80 dark:bg-slate-800/80 p-4 sm:p-6 text-center rounded-xl border border-slate-200 dark:border-slate-700 backdrop-blur-sm hover:scale-105 transition-transform duration-300">
@@ -112,7 +116,7 @@ const Hero = () => {
                 <span className="mr-2">🚀</span>25+
               </div>
               <div className="text-slate-700 dark:text-slate-300 text-sm sm:text-base">
-                AI Projects Deployed
+                {t("aiProjectsDeployed")}
               </div>
             </div>
             <div className="bg-slate-100/80 dark:bg-slate-800/80 p-4 sm:p-6 text-center rounded-xl border border-slate-200 dark:border-slate-700 backdrop-blur-sm hover:scale-105 transition-transform duration-300 col-span-1 sm:col-span-2 lg:col-span-1">
@@ -120,7 +124,7 @@ const Hero = () => {
                 <span className="mr-2">⚡</span>15+
               </div>
               <div className="text-slate-700 dark:text-slate-300 text-sm sm:text-base">
-                AI Technologies
+                {t("aiTechnologies")}
               </div>
             </div>
           </div>

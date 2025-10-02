@@ -1,9 +1,14 @@
+"use client";
+
 import React from "react";
+import { useTranslations } from "next-intl";
 
 const Skills = () => {
+  const t = useTranslations("skills");
+
   const skillCategories = [
     {
-      title: "Frontend Development",
+      title: t("frontend"),
       skills: [
         "React.js",
         "Next.js",
@@ -18,7 +23,7 @@ const Skills = () => {
       color: "from-blue-500 to-indigo-600",
     },
     {
-      title: "Backend Development",
+      title: t("backend"),
       skills: [
         "Node.js",
         "Python",
@@ -33,7 +38,7 @@ const Skills = () => {
       color: "from-green-500 to-emerald-600",
     },
     {
-      title: "Database & Cloud",
+      title: t("database"),
       skills: [
         "PostgreSQL",
         "MongoDB",
@@ -49,7 +54,7 @@ const Skills = () => {
       color: "from-purple-500 to-pink-600",
     },
     {
-      title: "Frameworks & Tools",
+      title: t("tools"),
       skills: [
         "Redux",
         "Laravel",
@@ -87,18 +92,17 @@ const Skills = () => {
         <div className="text-center mb-12 sm:mb-16">
           <div className="card-skeuomorphic inline-block px-4 sm:px-6 py-2 sm:py-3 mb-4 sm:mb-6">
             <span className="text-indigo-400 font-semibold text-sm sm:text-base">
-              Technical Skills
+              {t("sectionTitle")}
             </span>
           </div>
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-4 sm:mb-6 text-shadow-strong">
             <span className="bg-gradient-to-r from-indigo-400 to-cyan-400 bg-clip-text text-transparent">
-              Technical Expertise
+              {t("heading")}
             </span>
           </h2>
           <div className="w-16 sm:w-24 h-1 bg-gradient-to-r from-indigo-500 to-cyan-400 mx-auto rounded-full mb-4 sm:mb-6"></div>
           <p className="text-base sm:text-lg text-slate-600 dark:text-slate-400 max-w-2xl mx-auto leading-relaxed px-4 sm:px-0">
-            A comprehensive overview of my technical skills and professional
-            expertise across various technologies and development practices.
+            {t("description")}
           </p>
         </div>
 
@@ -154,7 +158,7 @@ const Skills = () => {
         <div className="mt-16">
           <div className="card-skeuomorphic p-8">
             <h3 className="text-2xl font-bold text-center text-slate-800 dark:text-slate-200 mb-8">
-              Professional Metrics
+              {t("metricsTitle")}
             </h3>
             <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
               <div className="text-center">
@@ -162,7 +166,7 @@ const Skills = () => {
                   <span className="text-white font-bold text-lg">3+</span>
                 </div>
                 <p className="text-slate-600 dark:text-slate-400 font-medium">
-                  Years Experience
+                  {t("yearsExperience")}
                 </p>
               </div>
               <div className="text-center">
@@ -170,7 +174,7 @@ const Skills = () => {
                   <span className="text-white font-bold text-lg">15+</span>
                 </div>
                 <p className="text-slate-600 dark:text-slate-400 font-medium">
-                  Projects Delivered
+                  {t("projectsDelivered")}
                 </p>
               </div>
               <div className="text-center">
@@ -178,7 +182,7 @@ const Skills = () => {
                   <span className="text-white font-bold text-lg">95%</span>
                 </div>
                 <p className="text-slate-600 dark:text-slate-400 font-medium">
-                  Client Satisfaction
+                  {t("clientSatisfaction")}
                 </p>
               </div>
               <div className="text-center">
@@ -186,7 +190,7 @@ const Skills = () => {
                   <span className="text-white font-bold text-lg">✓</span>
                 </div>
                 <p className="text-slate-600 dark:text-slate-400 font-medium">
-                  Available
+                  {t("available")}
                 </p>
               </div>
             </div>

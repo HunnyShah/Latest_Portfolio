@@ -3,25 +3,41 @@
 import React, { useState, useTransition } from "react";
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
+import { useTranslations } from "next-intl";
 import { ThemeToggle } from "./ThemeToggle";
+import LanguageSwitcher from "./LanguageSwitcher";
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isPending, startTransition] = useTransition();
   const pathname = usePathname();
   const router = useRouter();
+  const t = useTranslations("header");
+
+  // Get current locale from pathname
+  const getCurrentLocale = (): string => {
+    // Check if pathname starts with a locale
+    if (pathname.startsWith("/fr")) return "fr";
+    if (pathname.startsWith("/en")) return "en";
+    return "en"; // default
+  };
+
+  const currentLocale = getCurrentLocale();
 
   // Function to check if a link is active
   const isActive = (path: string) => {
-    if (path === "/") return pathname === "/";
-    return pathname.startsWith(path);
+    if (path === "/") return pathname === "/" || pathname.match(/^\/[a-z]{2}$/);
+    return pathname.includes(path);
   };
 
-  // Enhanced navigation with smooth transition
+  // Enhanced navigation with smooth transition and locale preservation
   const handleNavigation = (href: string) => {
-    if (pathname !== href) {
+    // Construct the full path with locale prefix
+    const fullPath = currentLocale === "en" ? href : `/fr${href}`;
+
+    if (!pathname.includes(href)) {
       startTransition(() => {
-        router.push(href);
+        router.push(fullPath);
       });
     }
     setIsMenuOpen(false);
@@ -57,7 +73,7 @@ const Header = () => {
                 } ${isPending ? "opacity-70" : ""}`}
                 disabled={isPending}
               >
-                About
+                {t("about")}
               </button>
               <button
                 onClick={() => handleNavigation("/projects")}
@@ -68,7 +84,7 @@ const Header = () => {
                 } ${isPending ? "opacity-70" : ""}`}
                 disabled={isPending}
               >
-                Projects
+                {t("projects")}
               </button>
               <button
                 onClick={() => handleNavigation("/skills")}
@@ -79,7 +95,7 @@ const Header = () => {
                 } ${isPending ? "opacity-70" : ""}`}
                 disabled={isPending}
               >
-                Skills
+                {t("skills")}
               </button>
               <button
                 onClick={() => handleNavigation("/contact")}
@@ -90,13 +106,14 @@ const Header = () => {
                 } ${isPending ? "opacity-70" : ""}`}
                 disabled={isPending}
               >
-                Contact
+                {t("contact")}
               </button>
             </div>
           </div>
 
-          {/* Right: Theme Toggle and Mobile Controls - Fixed width for balance */}
+          {/* Right: Language Switcher, Theme Toggle and Mobile Controls - Fixed width for balance */}
           <div className="flex items-center justify-end space-x-3 w-64">
+            <LanguageSwitcher />
             <ThemeToggle />
             {/* Mobile Menu Button */}
             <button
@@ -144,7 +161,7 @@ const Header = () => {
                 } ${isPending ? "opacity-70" : ""}`}
                 disabled={isPending}
               >
-                About
+                {t("about")}
               </button>
               <button
                 onClick={() => handleNavigation("/projects")}
@@ -155,7 +172,7 @@ const Header = () => {
                 } ${isPending ? "opacity-70" : ""}`}
                 disabled={isPending}
               >
-                Projects
+                {t("projects")}
               </button>
               <button
                 onClick={() => handleNavigation("/skills")}
@@ -166,7 +183,7 @@ const Header = () => {
                 } ${isPending ? "opacity-70" : ""}`}
                 disabled={isPending}
               >
-                Skills
+                {t("skills")}
               </button>
               <button
                 onClick={() => handleNavigation("/contact")}
@@ -177,7 +194,7 @@ const Header = () => {
                 } ${isPending ? "opacity-70" : ""}`}
                 disabled={isPending}
               >
-                Contact
+                {t("contact")}
               </button>
             </div>
           </div>

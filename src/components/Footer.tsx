@@ -1,7 +1,13 @@
+"use client";
+
 import React from "react";
 import Link from "next/link";
+import { useTranslations } from "next-intl";
 
 const Footer = () => {
+  const t = useTranslations("footer");
+  const tHeader = useTranslations("header");
+
   return (
     <footer className="bg-gradient-to-br from-slate-50 via-slate-100 to-slate-200 dark:from-slate-900 dark:via-slate-800 dark:to-slate-900 border-t border-slate-200 dark:border-slate-700 py-12 relative overflow-hidden">
       {/* Floating background elements */}
@@ -26,16 +32,14 @@ const Footer = () => {
               </h3>
             </div>
             <p className="text-slate-600 dark:text-slate-400 text-sm leading-relaxed mb-4">
-              Results-driven Full-stack developer passionate about creating
-              efficient and innovative solutions. Building tomorrow&apos;s
-              digital experiences with today&apos;s cutting-edge technologies.
+              {t("description")}
             </p>
 
             {/* Status indicator */}
             <div className="flex items-center p-3 bg-gradient-to-r from-emerald-900/50 to-green-900/50 rounded-lg border border-green-500/30">
               <div className="w-3 h-3 bg-green-500 rounded-full mr-3 animate-pulse"></div>
               <span className="text-green-600 dark:text-green-400 font-medium text-sm">
-                Available for Projects
+                {t("availableForProjects")}
               </span>
             </div>
           </div>
@@ -43,7 +47,7 @@ const Footer = () => {
           {/* Navigation Links */}
           <div className="card-skeuomorphic p-4 sm:p-6">
             <h3 className="text-lg font-bold text-slate-800 dark:text-slate-200 mb-4">
-              Quick Links
+              {t("quickLinks")}
             </h3>
             <ul className="space-y-3">
               <li>
@@ -52,7 +56,7 @@ const Footer = () => {
                   className="text-slate-600 dark:text-slate-400 hover:text-indigo-400 transition-colors flex items-center group"
                 >
                   <div className="w-2 h-2 bg-indigo-400 rounded-full mr-3 group-hover:bg-indigo-300 transition-colors"></div>
-                  About Me
+                  {tHeader("about")}
                 </Link>
               </li>
               <li>
@@ -61,7 +65,7 @@ const Footer = () => {
                   className="text-slate-600 dark:text-slate-400 hover:text-purple-400 transition-colors flex items-center group"
                 >
                   <div className="w-2 h-2 bg-purple-400 rounded-full mr-3 group-hover:bg-purple-300 transition-colors"></div>
-                  My Projects
+                  {tHeader("projects")}
                 </Link>
               </li>
               <li>
@@ -70,7 +74,7 @@ const Footer = () => {
                   className="text-slate-600 dark:text-slate-400 hover:text-cyan-400 transition-colors flex items-center group"
                 >
                   <div className="w-2 h-2 bg-cyan-400 rounded-full mr-3 group-hover:bg-cyan-300 transition-colors"></div>
-                  Technical Skills
+                  {tHeader("skills")}
                 </Link>
               </li>
               <li>
@@ -79,7 +83,7 @@ const Footer = () => {
                   className="text-slate-600 dark:text-slate-400 hover:text-indigo-400 transition-colors flex items-center group"
                 >
                   <div className="w-2 h-2 bg-indigo-400 rounded-full mr-3 group-hover:bg-indigo-300 transition-colors"></div>
-                  Get In Touch
+                  {tHeader("contact")}
                 </Link>
               </li>
             </ul>
@@ -88,7 +92,7 @@ const Footer = () => {
           {/* Social Networks */}
           <div className="card-skeuomorphic p-4 sm:p-6">
             <h3 className="text-lg font-bold text-slate-800 dark:text-slate-200 mb-4">
-              Connect With Me
+              {t("connect")}
             </h3>
             <div className="space-y-3">
               <a
@@ -110,7 +114,7 @@ const Footer = () => {
                     />
                   </svg>
                 </div>
-                GitHub
+                {t("github")}
               </a>
               <a
                 href="https://linkedin.com/in/hunnyshah"
@@ -131,7 +135,7 @@ const Footer = () => {
                     />
                   </svg>
                 </div>
-                LinkedIn
+                {t("linkedin")}
               </a>
               <a
                 href="mailto:hunnyshah1001@gmail.com"
@@ -152,7 +156,7 @@ const Footer = () => {
                     />
                   </svg>
                 </div>
-                Email
+                {t("email")}
               </a>
             </div>
           </div>
@@ -162,13 +166,11 @@ const Footer = () => {
         <div className="border-t border-slate-300 dark:border-slate-700 mt-6 sm:mt-8 pt-6 sm:pt-8">
           <div className="flex flex-col sm:flex-row justify-between items-center text-center sm:text-left">
             <div className="text-slate-600 dark:text-slate-400 text-sm mb-4 sm:mb-0">
-              &copy; {new Date().getFullYear()} Hunny Shah. All rights reserved.
+              &copy; {new Date().getFullYear()} Hunny Shah. {t("rights")}
             </div>
 
             <div className="flex items-center justify-center sm:justify-end">
-              <div className="text-slate-500 text-xs">
-                Made with ❤️ using Next.js & Tailwind CSS
-              </div>
+              <div className="text-slate-500 text-xs">{t("builtWith")}</div>
             </div>
           </div>
         </div>

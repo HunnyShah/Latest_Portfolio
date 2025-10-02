@@ -1,6 +1,11 @@
+"use client";
+
 import React from "react";
+import { useTranslations } from "next-intl";
 
 const About = () => {
+  const t = useTranslations("about");
+
   return (
     <section
       id="about"
@@ -19,12 +24,12 @@ const About = () => {
         <div className="text-center mb-12 sm:mb-16">
           <div className="inline-flex items-center px-4 sm:px-6 py-2 sm:py-3 mb-4 sm:mb-6 bg-gradient-to-r from-indigo-50 to-purple-50 dark:from-indigo-900/30 dark:to-purple-900/30 rounded-full border border-indigo-200 dark:border-indigo-700">
             <span className="text-indigo-600 dark:text-indigo-400 font-semibold text-sm sm:text-base">
-              About Me
+              {t("title")}
             </span>
           </div>
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-4 sm:mb-6 text-slate-900 dark:text-white">
             <span className="bg-gradient-to-r from-indigo-600 via-purple-600 to-cyan-600 dark:from-indigo-400 dark:via-purple-400 dark:to-cyan-400 bg-clip-text text-transparent">
-              Passionate Developer & Problem Solver
+              {t("subtitle")}
             </span>
           </h2>
           <div className="w-16 sm:w-24 h-1 bg-gradient-to-r from-indigo-500 to-cyan-400 mx-auto rounded-full"></div>
@@ -49,33 +54,31 @@ const About = () => {
                 </svg>
               </div>
               <h3 className="text-2xl font-bold text-slate-800 dark:text-slate-200">
-                My Journey
+                {t("myJourney")}
               </h3>
             </div>
 
             <p className="text-slate-600 dark:text-slate-400 mb-6 leading-relaxed">
-              Results-driven Full-stack web developer with a passion for
-              creating efficient and innovative solutions. Graduated with a
-              strong academic foundation in computer science and equipped with
-              hands-on experience across the full development stack.
+              {t("intro")}
             </p>
 
             <p className="text-slate-600 dark:text-slate-400 mb-6 leading-relaxed">
-              Proficient in various programming languages and frameworks with
-              strong problem-solving skills and commitment to delivering
-              high-quality code. Ready to contribute technical expertise to
-              Canada&apos;s dynamic tech industry.
+              {t("description")}
+            </p>
+
+            <p className="text-slate-600 dark:text-slate-400 mb-6 leading-relaxed">
+              {t("approach")}
             </p>
 
             <div className="flex flex-wrap gap-3">
               <span className="px-4 py-2 bg-indigo-100 dark:bg-indigo-900/30 text-indigo-700 dark:text-indigo-300 rounded-lg font-medium text-sm border border-indigo-200 dark:border-indigo-700">
-                Full-Stack Developer
+                {t("fullStackDeveloper")}
               </span>
               <span className="px-4 py-2 bg-purple-100 dark:bg-purple-900/30 text-purple-700 dark:text-purple-300 rounded-lg font-medium text-sm border border-purple-200 dark:border-purple-700">
-                Innovation Driven
+                {t("innovationDriven")}
               </span>
               <span className="px-4 py-2 bg-cyan-100 dark:bg-cyan-900/30 text-cyan-700 dark:text-cyan-300 rounded-lg font-medium text-sm border border-cyan-200 dark:border-cyan-700">
-                Quality Focused
+                {t("qualityFocused")}
               </span>
             </div>
           </div>
@@ -98,7 +101,7 @@ const About = () => {
                 </svg>
               </div>
               <h3 className="text-2xl font-bold text-slate-800 dark:text-slate-200">
-                Quick Facts
+                {t("quickFacts")}
               </h3>
             </div>
 
@@ -107,10 +110,10 @@ const About = () => {
                 <div className="w-3 h-3 bg-gradient-to-r from-indigo-500 to-purple-500 rounded-full mr-4"></div>
                 <div>
                   <span className="font-semibold text-slate-800 dark:text-slate-200">
-                    Location:
+                    {t("location")}:
                   </span>
                   <span className="text-slate-600 dark:text-slate-400 ml-2">
-                    Toronto, Ontario
+                    {t("locationValue")}
                   </span>
                 </div>
               </div>
@@ -119,10 +122,10 @@ const About = () => {
                 <div className="w-3 h-3 bg-gradient-to-r from-purple-500 to-cyan-500 rounded-full mr-4"></div>
                 <div>
                   <span className="font-semibold text-slate-800 dark:text-slate-200">
-                    Experience:
+                    {t("experienceLabel")}:
                   </span>
                   <span className="text-slate-600 dark:text-slate-400 ml-2">
-                    3+ years
+                    {t("experience")}
                   </span>
                 </div>
               </div>
@@ -131,10 +134,10 @@ const About = () => {
                 <div className="w-3 h-3 bg-gradient-to-r from-cyan-500 to-indigo-500 rounded-full mr-4"></div>
                 <div>
                   <span className="font-semibold text-slate-800 dark:text-slate-200">
-                    Education:
+                    {t("projectsLabel")}:
                   </span>
                   <span className="text-slate-600 dark:text-slate-400 ml-2">
-                    Cloud Computing Student
+                    {t("projects")}
                   </span>
                 </div>
               </div>
@@ -143,10 +146,10 @@ const About = () => {
                 <div className="w-3 h-3 bg-gradient-to-r from-green-500 to-emerald-500 rounded-full mr-4 animate-pulse"></div>
                 <div>
                   <span className="font-semibold text-slate-800 dark:text-slate-200">
-                    Status:
+                    {t("technologiesLabel")}:
                   </span>
                   <span className="text-emerald-600 dark:text-emerald-400 ml-2 font-medium">
-                    Seeking Opportunities
+                    {t("technologies")}
                   </span>
                 </div>
               </div>

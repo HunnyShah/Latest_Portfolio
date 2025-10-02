@@ -1,54 +1,12 @@
+"use client";
+
 import React from "react";
+import { useTranslations } from "next-intl";
+import { projects } from "@/types/translations";
+import type { ProjectStatus } from "@/types/translations";
 
 const Projects = () => {
-  const projects = [
-    {
-      title: "KoachLearn Platform",
-      description:
-        "Learning platform with video streaming, course management, and subscription system. Features Cloudflare integration for secure video delivery and Stripe payment processing.",
-      technologies: [
-        "Next.js",
-        "Tailwind",
-        "Shadcn",
-        "Clerk.js",
-        "Prisma",
-        "Postgres",
-        "Stripe",
-        "Cloudflare",
-      ],
-      githubUrl: "#",
-      liveUrl: "https://koachlearn.com",
-      status: "DEPLOYED",
-      icon: "🎓",
-    },
-    {
-      title: "Chat Application",
-      description:
-        "Real-time messaging platform with typing indicators, read receipts, group chats, and search functionality. Built for scalability and optimal performance.",
-      technologies: ["Next.js", "Convex", "JavaScript", "TailwindCSS"],
-      githubUrl: "#",
-      liveUrl: "#",
-      status: "ACTIVE",
-      icon: "💬",
-    },
-    {
-      title: "Ment Connections",
-      description:
-        "Full-stack web platform with user authentication, email integration, and dynamic interfaces. Enhanced security and database management for professional networking.",
-      technologies: [
-        "Next.js",
-        "Material-UI",
-        "NextAuth.js",
-        "Nest.js",
-        "Prisma",
-        "MySQL",
-      ],
-      githubUrl: "#",
-      liveUrl: "#",
-      status: "COMPLETED",
-      icon: "🤝",
-    },
-  ];
+  const t = useTranslations("projects");
 
   return (
     <section
@@ -68,18 +26,17 @@ const Projects = () => {
         <div className="text-center mb-12 sm:mb-16">
           <div className="card-skeuomorphic inline-block px-4 sm:px-6 py-2 sm:py-3 mb-4 sm:mb-6">
             <span className="text-indigo-400 font-semibold text-sm sm:text-base">
-              My Work
+              {t("myWork")}
             </span>
           </div>
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-4 sm:mb-6 text-shadow-strong">
             <span className="bg-gradient-to-r from-indigo-400 to-cyan-400 bg-clip-text text-transparent">
-              Featured Projects
+              {t("heading")}
             </span>
           </h2>
           <div className="w-16 sm:w-24 h-1 bg-gradient-to-r from-indigo-500 to-cyan-400 mx-auto rounded-full mb-4 sm:mb-6"></div>
           <p className="text-base sm:text-lg text-slate-600 dark:text-slate-400 max-w-2xl mx-auto leading-relaxed px-4 sm:px-0">
-            A collection of projects that showcase my skills in full-stack
-            development, modern web technologies, and creative problem-solving.
+            {t("description")}
           </p>
         </div>
 
@@ -100,7 +57,7 @@ const Projects = () => {
                       : "bg-purple-900/50 text-purple-400 border border-purple-500/30"
                   }`}
                 >
-                  {project.status}
+                  {t(project.status)}
                 </span>
               </div>
 
@@ -111,11 +68,11 @@ const Projects = () => {
                 </div>
 
                 <h3 className="text-2xl font-bold text-slate-800 dark:text-slate-200 mb-4 group-hover:text-indigo-400 transition-colors">
-                  {project.title}
+                  {t(`${project.id}.title`)}
                 </h3>
 
                 <p className="text-slate-600 dark:text-slate-400 mb-6 leading-relaxed">
-                  {project.description}
+                  {t(`${project.id}.description`)}
                 </p>
 
                 <div className="flex flex-wrap gap-2 mb-8">
@@ -145,7 +102,7 @@ const Projects = () => {
                         clipRule="evenodd"
                       />
                     </svg>
-                    Code
+                    {t("code")}
                   </a>
                   <a
                     href={project.liveUrl}
@@ -164,7 +121,7 @@ const Projects = () => {
                         d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"
                       />
                     </svg>
-                    Live Demo
+                    {t("liveDemo")}
                   </a>
                 </div>
               </div>
